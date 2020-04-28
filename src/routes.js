@@ -5,12 +5,15 @@ import GlobalFeed from './pages/globalFeed/globalFeed'
 import Auth from './pages/auth/auth'
 import TagFeed from './pages/tagFeed/tagFeed'
 import YourFeed from './pages/YourFeed.js/yourFeed.js'
+import CreateArticle from './pages/createArticle/createArticle'
+
 
 
 const Routes = () => {
     return (
         <Switch>
             <Route path='/' component={GlobalFeed} exact/>
+            <Route path='/articles/new' component={CreateArticle}/>
             <Route path='/feed' component={YourFeed}/>
             <Route path='/tags/:slug' component={TagFeed}/>
             <Route path='/login' component={Auth}/>
