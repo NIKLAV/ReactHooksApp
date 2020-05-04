@@ -2,11 +2,11 @@ import React, { useEffect, useState, useContext } from "react";
 import ArticleForm from "../../components/articleForm";
 import useFetch from "../../hooks/useFetch";
 import { Redirect } from "react-router-dom";
-import {CurrentUserContext} from '../../context/currentUser'
+import { CurrentUserContext } from "../../context/currentUser";
 const CreateArticle = () => {
   const apiUrl = "/articles";
   const [{ response, error, isLoading }, doFetch] = useFetch(apiUrl);
-  const [currentUserState] = useContext(CurrentUserContext)
+  const [currentUserState] = useContext(CurrentUserContext);
 
   const initialValues = {
     title: "",
@@ -14,7 +14,7 @@ const CreateArticle = () => {
     body: "",
     tagList: [],
   };
-  const [isSuccessfullSubmit, setIsSuccessfullSubmit] = useState(false)
+  const [isSuccessfullSubmit, setIsSuccessfullSubmit] = useState(false);
   const handleSubmit = (article) => {
     doFetch({
       method: "post",
@@ -25,19 +25,18 @@ const CreateArticle = () => {
   };
 
   useEffect(() => {
-      if (!response) {
-        return
-      }
-      setIsSuccessfullSubmit(true)
-  }, [response])
+    if (!response) {
+      return;
+    }
+    setIsSuccessfullSubmit(true);
+  }, [response]);
 
-  if(currentUserState.isLoggedIn === false ) {
-    return <Redirect to='/'/>
+  if (currentUserState.isLoggedIn === false) {
+    return <Redirect to="/" />;
   }
 
-
-  if(isSuccessfullSubmit) {
-      return <Redirect to={`/articles/${response.article.slug}`}/>
+  if (isSuccessfullSubmit) {
+    return <Redirect to={`/articles/${response.article.slug}`} />;
   }
 
   return (

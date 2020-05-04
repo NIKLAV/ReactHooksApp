@@ -1,45 +1,50 @@
 import { createContext, useReducer } from "react";
-import React from 'react'
+import React from "react";
 
 const initialState = {
-        isLoading: false,
-        isLoggedIn: null,
-        currentUser: null
-}
+  isLoading: false,
+  isLoggedIn: null,
+  currentUser: null,
+};
 
 const reducer = (state, action) => {
-    switch (action.type) {
-        case 'LOADING':
-            return {...state, isLoading: true}
-        case 'SET_AUTHORIZED':
-            return {
-                ...state,
-                isLoggedIn: true,
-                isLoading: false,
-                currentUser: action.payload
-            }
-            case 'SET_UNAUTHORIZED':
-                return {
-                    ...state,
-                    isLoggedIn: false
-                }
-        default: 
-                return state        
-    }
-}
+  switch (action.type) {
+    case "LOADING":
+      return { ...state, isLoading: true };
+    case "SET_AUTHORIZED":
+      return {
+        ...state,
+        isLoggedIn: true,
+        isLoading: false,
+        currentUser: action.payload,
+      };
+    case "SET_UNAUTHORIZED":
+      return {
+        ...state,
+        isLoggedIn: false,
+      };
+    default:
+      return state;
+  }
+};
 
-const newState = reducer(initialState, {type: 'LOGOUT'})
+const newState = reducer(initialState, { type: "LOGOUT" });
 
-export const CurrentUserContext = createContext()
+export const CurrentUserContext = createContext();
 
-export const CurrentUserProvider = ({children}) => {
-    const value = useReducer(reducer, initialState) /* useState({
+export const CurrentUserProvider = ({ children }) => {
+  const value = useReducer(
+    reducer,
+    initialState
+  ); /* useState({
         isLoading: false,
         isLoggedIn: null,
         currentUser: null
     }) */
 
-     return <CurrentUserContext.Provider value={value}>
-        {children}
+  return (
+    <CurrentUserContext.Provider value={value}>
+      {children}
     </CurrentUserContext.Provider>
-}
+  );
+};

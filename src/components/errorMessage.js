@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react";
 
 const ErrorMessage = () => {
-    return <div>Something went wrong</div>
-}
-export default ErrorMessage
+  return <div>Something went wrong</div>;
+};
+export default ErrorMessage;

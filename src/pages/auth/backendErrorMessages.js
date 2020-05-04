@@ -1,19 +1,19 @@
-import React from 'react'
+import React from "react";
 
-const BackendErrorMessages = ({backendErrors}) => {
-    console.log('backerrors', backendErrors)
-    const errorMessages = Object.keys(backendErrors).map(name => {
-        const messages = backendErrors[name].join(' ')
-        return `${name} ${messages}`
-    })
-    console.log('errorMessage', errorMessages)
-    return (
-        <ul className="error-messages">
-            {errorMessages.map(errorMessage => (
-                <li key={errorMessage}>{errorMessage}</li>
-            ))}
-        </ul>
-    )
-}
+const BackendErrorMessages = ({ backendErrors }) => {
+  console.log("backerrors", backendErrors);
+  const errorMessages = Object.keys(backendErrors).map((name) => {
+    const messages = backendErrors[name].join(" ");
+    return `${name} ${messages}`;
+  });
+  console.log("errorMessage", errorMessages);
+  return (
+    <ul className="error-messages">
+      {errorMessages.map((errorMessage) => (
+        <li key={errorMessage}>{errorMessage}</li>
+      ))}
+    </ul>
+  );
+};
 
-export default BackendErrorMessages
+export default BackendErrorMessages;

@@ -10,30 +10,30 @@ const ArticleForm = ({ onSubmit, errors, initialValues }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const article = {
-        title,
-        body,
-        description,
-        tagList
-    }
+      title,
+      body,
+      description,
+      tagList,
+    };
     onSubmit(article);
   };
 
   useEffect(() => {
-    if(!initialValues) {
-        return
+    if (!initialValues) {
+      return;
     }
-    setTitle(initialValues.title)
-    setDescription(initialValues.description)
-    setBody(initialValues.body)
-    setTagList(initialValues.tagList.join(' '))
-  }, [initialValues])
+    setTitle(initialValues.title);
+    setDescription(initialValues.description);
+    setBody(initialValues.body);
+    setTagList(initialValues.tagList.join(" "));
+  }, [initialValues]);
 
   return (
     <div className="editor-page">
       <div className="container page">
         <div className="row">
           <div className="col-md-10 offset-md-1 col-xs-12">
-            {errors && <BackendErrorMessages backendErrors={errors}/>}
+            {errors && <BackendErrorMessages backendErrors={errors} />}
             <form onSubmit={handleSubmit}>
               <fieldset>
                 <fieldset className="form-group">
